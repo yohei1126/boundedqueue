@@ -5,8 +5,10 @@
 
 template <typename T>
 class BoundedQueue {
-public:
-  BoundedQueue(QueueControl& producer){}
+ public:
+  BoundedQueue(QueueControl& producer){
+    producer.Resume();
+  }
 };
 
 #endif
