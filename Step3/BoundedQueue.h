@@ -6,8 +6,9 @@
 template <typename T>
 class BoundedQueue {
  public:
-  BoundedQueue(QueueControl& producer){
+  BoundedQueue(QueueControl& producer, QueueControl& consumer){
     producer.Resume();
+    consumer.Resume();
   }
 };
 
