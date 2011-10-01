@@ -26,3 +26,10 @@ TEST(BoundedQueueTest, CreatePausesConsumer){
   EXPECT_CALL(consumer, Resume());
   BoundedQueue<int> q(producer, consumer);
 }
+
+TEST(BoundedQueueTest, EnqueueResumesConsumer){
+  MockQueueControl producer, consumer;
+  BoundedQueue <int> q(producer, consumer);
+  EXPECT_CALL(consumer, Resume());
+  q.enqueue(5);
+}

@@ -5,10 +5,17 @@
 
 template <typename T>
 class BoundedQueue {
+ private:
+  QueueControl &consumer_;
+
  public:
-  BoundedQueue(QueueControl& producer, QueueControl& consumer){
+ BoundedQueue(QueueControl& producer, QueueControl& consumer)
+   :consumer_(consumer){
     producer.Resume();
-    consumer.Resume();
+    consumer_.Resume();
+  }
+  void enqueue(const T& item){
+    consumer_.Resume();
   }
 };
 
