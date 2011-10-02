@@ -18,7 +18,9 @@ class BoundedQueue {
   }
   void enqueue(const T& item){
     q.push(item);
-    consumer_.Resume();
+    if (q.size() == 1 ) {
+      consumer_.Resume();
+    }
   }
   const T& dequeue(){
     const T& val = q.front();
